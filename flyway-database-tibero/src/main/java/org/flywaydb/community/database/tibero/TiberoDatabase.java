@@ -135,4 +135,11 @@ public class TiberoDatabase extends Database<TiberoConnection> {
         // Explicitly set installed_on to CURRENT_TIMESTAMP().
         return "";
     }
+
+    /**
+     * TODO: Tibero에 맞춰서 쿼리 변경 필요!
+     */
+    boolean queryReturnsRows(String query, String... params) throws SQLException {
+        return getMainConnection().getJdbcTemplate().queryForBoolean("SELECT CASE WHEN EXISTS(" + query + ") THEN 1 ELSE 0 END FROM DUAL", params);
+    }
 }

@@ -8,13 +8,13 @@ import org.flywaydb.core.internal.util.FileUtils;
 
 public class TiberoDatabaseExtension implements PluginMetadata {
     public String getDescription() {
-        return "Community-contributed Databricks database support extension " + readVersion() + " by Redgate";
+        return "Community-contributed Tibero database support extension " + readVersion() + " by Redgate";
     }
 
     public static String readVersion() {
         try {
             return FileUtils.copyToString(
-                TiberoDatabaseExtension.class.getClassLoader().getResourceAsStream("org/flywaydb/community/database/databricks/version.txt"),
+                TiberoDatabaseExtension.class.getClassLoader().getResourceAsStream("org/flywaydb/community/database/tibero/version.txt"),
                     StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new FlywayException("Unable to read extension version: " + e.getMessage(), e);
